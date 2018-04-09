@@ -226,7 +226,7 @@ void preintro(){
 	cout << endl;
 	cout << "Enter your name:" << endl;
 	getline(cin,name);
-	if(name[0]>= 'a' || name[0] <= 'z'){
+	if(name[0]>= 'a' && name[0] <= 'z'){
         name[0]-=32;
 	}
 	sec0:
