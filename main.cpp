@@ -9,6 +9,11 @@
 play mp3: https://stackoverflow.com/questions/22253074/how-to-play-or-open-mp3-or-wav-sound-file-in-c-program
 */
 // ADD LINKER LIBRARY http://forums.codeblocks.org/index.php?topic=15998.0 for exe to run on other computers
+/*
+I added the following options to "Other linker options":
+Code: [Select]
+-static-libgcc -static-libstdc++
+*/
 
 //a lifeless chatbot thinking about time
 using namespace std;
@@ -335,7 +340,7 @@ void section1(){    //the present day
 
 	cout << "--- OPTION ---" << endl;
 	cout << "1. I'm doing great! How are you? :)" << endl;
-	cout << "2. Not really, finals are coming and things are getting tough :( How about you?" << endl;
+	cout << "2. Not really that good, finals are coming and things are getting tough :( How about you?" << endl;
 	cout << "3. Enter your personal response" << endl;
 	cout << "Enter your option:";
 	cin >> choice;
