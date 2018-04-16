@@ -8,6 +8,7 @@
 /*
 play mp3: https://stackoverflow.com/questions/22253074/how-to-play-or-open-mp3-or-wav-sound-file-in-c-program
 */
+// ADD LINKER LIBRARY http://forums.codeblocks.org/index.php?topic=15998.0 for exe to run on other computers
 
 //a lifeless chatbot thinking about time
 using namespace std;
@@ -122,8 +123,10 @@ void checkinput(){
     	cin.clear ();    // Restore input stream to working state
     	cin.ignore ( 100 , '\n' );    // Get rid of any garbage that user might have entered
    		Sleep(gs);
+   		cout << endl;
    		cout << ">.<" << endl;
-		cout << "That's not even a valid input! Are you trying to crash this?";
+		cout << "Please do not enter other characters when not supposed to.";
+    	cout << endl;
     	cout << endl;
 		}
 }
@@ -202,9 +205,10 @@ void preintro(){
 	cout << "--- OPTION ---" << endl;
 	cout << "1. Boy" << endl;
 	cout << "2. Girl" << endl;
+	cout << "3. Other" << endl;
 	cout << "Enter your option:";
 	cin >> uresp;
-	if(uresp == 1){
+	if(uresp == 1 || uresp == 3){
 		comNameLong = "Nicole Tyler";
 		comName = "Nicole";
 		comGender = 2;
@@ -254,7 +258,7 @@ void preintro(){
 		goto sec0;
 	}
 	validSound();
-	cout << "Please be assured that this program will not store any of your responses to the questions" << endl;
+	cout << "Please note that this program will not store any of your responses to the questions" << endl;
 	Sleep(gs*4);
 	transition.play(0);
 	flushScreen();
@@ -271,12 +275,13 @@ void intromsg(){
 	Sleep(gs);
 	cout << "In this parallel universe, a robot from the future decides to visit our current reality" << endl;
 	Sleep(gs*3);
-	cout << " ... " << endl;
+	cout << "... " << endl;
 	Sleep(gs);
-	cout << "Will you like to continue?                                                                     DEBUG: ***Warp? 99***" << endl;
+	cout << "Will you like to continue?                                                                     ******" << endl;
 	cout << "--- OPTION ---" << endl;
 	cout << "1. Yes" << endl;
 	cout << "2. No" << endl;
+	cout << "99. Skip to main menu" << endl;
 	cout << "Enter your option:";
 	setgs(1000);
 	cin >> uresp;
@@ -395,6 +400,7 @@ void section1(){    //the present day
 		cout << ":(" << endl;
 		Sleep (gs/2);
 		invalid();
+		checkinput();
 		cout << endl;
 		goto sec11;
 	}
@@ -443,6 +449,7 @@ void section1(){    //the present day
             cout << ":(" << endl;
             Sleep (gs/2);
             invalid();
+            checkinput();
             cout << endl;
             goto sec12;
         }
@@ -499,6 +506,7 @@ void section1(){    //the present day
 		cout << ":(" << endl;
 		Sleep (gs/2);
 		invalid();
+		checkinput();
 		cout << endl;
 		goto sec13;
 	}
@@ -524,6 +532,7 @@ void section1(){    //the present day
 		cout << ":(" << endl;
 		Sleep (gs/2);
 		invalid();
+		checkinput();
 		cout << endl;
 		goto sec14;
 	}
@@ -539,15 +548,17 @@ void section1(){    //the present day
     Sleep(gs*2);
     cout << "..." << endl;
     Sleep(gs);
-    cout << "Today, I have a time shuriken with me,";
+    cout << "Today, I have a Time Shuriken with me,";
     Sleep(gs*2);
     cout <<" and I can take you back to the distant past, or the mystifying future" << endl;
     Sleep(gs*2);
     cout <<"There's only one limitation though" << endl;
     Sleep(gs);
-    cout << "You can only use the time shuriken by being in contact with me through this window." << endl;
+    cout << "You can only use the Time Shuriken by being in contact with me through this window." << endl;
     Sleep(gs);
-    cout << "This..."; Sleep(gs/2); cout << "microsoft window" << endl;
+    cout << "This..."; Sleep(gs/2); cout << "microsoft window ";
+    Sleep(gs/2);
+    cout << ";)" << endl;
 
     Sleep(gs*3);
     sec15:
@@ -574,6 +585,7 @@ void section1(){    //the present day
 		cout << ":(" << endl;
 		Sleep (gs/2);
 		invalid();
+		checkinput();
 		cout << endl;
 		goto sec15;
 	}
@@ -637,11 +649,14 @@ void section2(){    //the 1950s
         cout << ":(" << endl;
         Sleep (gs/2);
         invalid();
+        checkinput();
         cout << endl;
         goto sec21;
     }
 
     cout << "In fact, the actual time taken for me to communicate with you" << endl;
+    Sleep(gs*2);
+    cout << "by Air Mail, (long distance calls were not within reach of the general population because of the price)" << endl;
     Sleep(gs*3);
     cout << endl;
     cout << endl;
@@ -714,6 +729,7 @@ void section2(){    //the 1950s
         cout << ":(" << endl;
         Sleep (gs/2);
         invalid();
+        checkinput();
         cout << endl;
         goto sec22;
     }
@@ -745,13 +761,14 @@ void section3(){    //the early 2000s
     SOMH.play(1);
     Sleep(gs*3);
     cout << endl;
-    cout << "Seems like the internet isn't that fast yet huh" << endl;
+    cout << "Seems like the internet isn't fast enough to play music directly" << endl;
     Sleep(gs*3);
     cout << endl;
     SOMH.play(1);
     Sleep(5);
     cout << "Error. File download incomplete" << endl;
     silent.play(1);
+    invalidSound();
 
     cout << endl;
     cout << endl;
@@ -759,7 +776,7 @@ void section3(){    //the early 2000s
     cout << "...speeding up time..." << endl;
     Sleep(gs);
     setgs(200);
-    for (int i = 0; i <= 54; i+=3){
+    for (int i = 0; i <= 60; i+=3){
         cout << "time: 0 min " << i<< " sec..." << endl;
         Sleep(gs);
     }
@@ -768,8 +785,9 @@ void section3(){    //the early 2000s
     SOMH.play(1);
     cout << endl;
     cout << endl;
-
+    Sleep(gs*2);
     cout << "The internet allowed speed to improve over time, as compared to the 1950s, allowing time to pass more \'quickly\'" << endl;
+    cout << "as we focus on completing more things throughout the day." << endl;
     Sleep(gs*3.5);
     cout << "As society progresses and as time passes, well...";
     Sleep(gs*2);
@@ -820,6 +838,7 @@ void section3(){    //the early 2000s
         cout << ":(" << endl;
         Sleep (gs/2);
         invalid();
+        checkinput();
         cout << endl;
         goto sec31;
     }
@@ -1062,6 +1081,7 @@ void section4(){    //the FUTURE
     cout << "Scenario 4: The Future\n\n" << endl;
     Sound future("future.wav");
     future.play(1);
+
     setgs(200);
     cout << "Hey " << name << ", welcome to the year 2073" << endl;
     Sleep(gs);
@@ -1288,6 +1308,7 @@ void section4(){    //the FUTURE
         cout << ":(" << endl;
         Sleep (gs/2);
         invalid();
+        checkinput();
         cout << endl;
         goto sec41;
     }
@@ -1297,7 +1318,9 @@ void section4(){    //the FUTURE
     Sleep(gs);
     cout << "..." << endl;
     Sleep(gs*2);
-    cout << "But doing so for extended periods of time tires you out" << endl;
+    cout << "Even though you are able to accomplish this, do you feel that..." << endl;
+    Sleep(gs*2);
+    cout << "doing so for extended periods of time tires you out?" << endl;
     Sleep(gs*2);
     cout << "What if bedtime stories, lunchtime conversations, and late night heart to heart talks," << endl;
     Sleep(gs*3);
@@ -1310,7 +1333,7 @@ void section4(){    //the FUTURE
     cout << "lower the quality of time spent?" << endl;
     cout << "..." << endl;
     Sleep(gs*2);
-    cout << "Which makes time go even \'faster\' as we remember less" << endl;
+    cout << "Which makes time go even \'faster\' as we remember less about our days with hectic speeds?" << endl;
     Sleep(gs);
     cout << "..." << endl;
     Sleep(gs);
@@ -1337,6 +1360,7 @@ void section4(){    //the FUTURE
         cout << ":(" << endl;
         Sleep (gs/2);
         invalid();
+        checkinput();
         cout << endl;
         goto sec42;
     }
@@ -1374,13 +1398,16 @@ void credits(){     //to state references and sources
         cout << ":(" << endl;
         Sleep (gs/2);
         invalid();
+        checkinput();
         cout << endl;
         goto cre1;
     }
+    cout << endl;
     cout << "Project Done By: Chun Hong Wei" << endl;
     cout << "Time and Life Semester 2 AY17/18" << endl;
+    cout << "Full code on https://github.com/driedmelon" << endl;
     cout << endl;
-    Sleep(gs*2);
+    Sleep(gs*3);
 
     cout << "Copyright Disclaimer Under Section 107 of the Copyright Act 1976, allowance is made for -fair use-" << endl;
     cout << "for purposes such as criticism, comment, news reporting, teaching, scholarship, and research. Fair " << endl;
@@ -1420,19 +1447,19 @@ void credits(){     //to state references and sources
     cout << "Music Credits: futureSlow.wav (Maplestory HallofFame Happyville http://www.thejasoneffect.net/maple-story-ost/)" << endl;
     cout << endl;
     Sleep(gs);
-    cout << "People to be thanked:" << endl;
+    cout << "I will like to thank:" << endl;
     cout << endl;
     Sleep(gs);
-    cout << "People to be thanked: Dr Celine for her guidance and pointers" << endl;
+    cout << "I will like to thank: Dr Celine for her guidance and pointers" << endl;
     cout << endl;
     Sleep(gs);
-    cout << "People to be thanked: Boston Cheong for his time for testing out the app and giving feedback" << endl;
+    cout << "I will like to thank: Boston Cheong for his time for testing out the app and giving feedback" << endl;
     cout << endl;
     Sleep(gs);
-    cout << "People to be thanked: Tembusu College for being the home of possibilities" << endl;
+    cout << "I will like to thank: Tembusu College for being the home of possibilities" << endl;
     cout << endl;
     Sleep(gs);
-    cout << "People to be thanked: My time and life classmates" << endl;
+    cout << "I will like to thank: My time and life classmates" << endl;
     endCre:
     cout << endl;
     Sleep(gs*2.5);
